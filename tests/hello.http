@@ -1,0 +1,7 @@
+# Wiremock http calls
+
+### Refresh wiremock stubs
+curl -X POST http://localhost:8080/__admin/mappings/reset
+
+### Hello mock
+curl -X GET http://localhost:8080/hello

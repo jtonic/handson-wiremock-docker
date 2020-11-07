@@ -1,0 +1,16 @@
+version: "2"
+services:
+  wiremock:
+    container_name: wiremock-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - WIREMOCK_VERSION=$WIREMOCK_VERSION
+        - WIREMOCK_HTTP_PORT=$WIREMOCK_HTTP_PORT
+        - WIREMOCK_HTTPS_PORT=$WIREMOCK_HTTPS_PORT
+    ports:
+      - "$HOST_HTTP_PORT:$WIREMOCK_HTTP_PORT"
+      - "$HOST_HTTPS_PORT:$WIREMOCK_HTTPS_PORT"
+    volumes:
+      - ./wiremock/stubs:/home/wiremock
